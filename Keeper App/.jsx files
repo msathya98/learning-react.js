@@ -1,0 +1,66 @@
+////App.jsx////
+
+import React from "react";
+import Header from "./Header";
+import Footer from "./Footer";
+import Note from "./Note";
+
+function App() {
+  return (
+    <div>
+      <Header />
+      <Footer />
+      <Note />
+    </div>
+  );
+}
+
+export default App;
+
+
+//// Header.jsx /////
+
+import React from "react";
+
+function Header() {
+  return (
+    <header>
+      <h1>Keeper</h1>
+    </header>
+  );
+}
+export default Header;
+
+////// Footer.jsx /////
+
+import React from "react";
+
+function Footer() {
+  var d = new Date();
+var n = d.getFullYear();
+
+
+  return (
+  <footer>
+    <div>
+   <p>Copyright {n} by Sathya</p>
+   </div>
+   </footer>
+  );
+}
+export default Footer;
+
+
+////// Note.jsx ////////
+
+import React from "react";
+
+function Note() {
+  return (
+    <div class="note">
+      <h1>This is note title</h1>
+      <p>This is note para</p>
+    </div>
+  );
+}
+export default Note;
