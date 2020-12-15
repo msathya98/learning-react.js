@@ -3,29 +3,28 @@
 import React from "react";
 import Card from "./Card";
 import contacts from "../contacts";
+import Avatar from "./Avatar";
+
+function createCard(contact) {
+  return (
+    <Card
+      id={contact.id}
+      key={contact.id}
+      name={contact.name}
+      img={contact.imgURL}
+      tel={contact.phone}
+      email={contact.email}
+    />
+  );
+}
 
 function App() {
   return (
     <div>
       <h1 className="heading">My Contacts</h1>
-      <Card
-        name={contacts[0].name}
-        img={contacts[0].imgURL}
-        tel={contacts[0].phone}
-        email={contacts[0].email}
-      />
-<Card
-       name={contacts[1].name}
-        img={contacts[1].imgURL}
-        tel={contacts[1].phone}
-        email={contacts[1].email}
-      />
-<Card
-        name={contacts[2].name}
-        img={contacts[2].imgURL}
-        tel={contacts[2].phone}
-        email={contacts[2].email}
-      />
+
+      {contacts.map(createCard)}
+      <Avatar img="https://i.pinimg.com/originals/d6/31/ae/d631aee021214bede57d5b9b2ed136e0.jpg" />
     </div>
   );
 }
@@ -34,6 +33,7 @@ export default App;
 
 
 /////Avatar.jsx /////
+
 import React from "react";
 
 function Avatar(props){
@@ -45,20 +45,39 @@ export default Avatar;
 ////// Card.jsx//////
 
 import React from "react";
+import contacts from "../contacts";
 import Avatar from "./Avatar";
+import Details from "./Details";
 
 function Card(props) {
   return (
-       <div className="card">
-        <div className="top">
-           <h2 className="name">{props.name}</h2>
-        <Avatar img= {props.img}/>
+    <div className="card">
+      <div className="top">
+        <p className="key">{props.id}</p>
+        <h2 className="name">{props.name}</h2>
+        <Avatar img={props.img} />
       </div>
       <div className="bottom">
-        <p className="info">{props.tel}</p>
-         <p className="info">{props.email}</p>
+        <Details detailInfo={props.tel} />
+        <Details detailInfo={props.email} />
       </div>
     </div>
   );
 }
 export default Card;
+
+
+//////Details.jsx //////
+
+import React from "react";
+
+function Details(props) {
+  return (<p className="info">
+        {props.detailInfo}
+      </p>
+
+  );
+}
+
+export default Details;
+
