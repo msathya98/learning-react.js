@@ -1,0 +1,57 @@
+/// App.jsx ////
+
+import React from "react";
+import Login from "./Login";
+
+var isLoggedOn = false;
+
+function rendercomndition(){
+  if(isLoggedOn === true){
+    return <h1>Hello</h1>
+  }else {
+
+  return <Login/>
+}
+  
+}
+function App() {
+  return (
+    <div className="container">
+    {rendercomndition()}
+    </div>
+  )
+};
+
+export default App;
+
+
+//// Input.jsx /////
+
+import React from "react";
+
+function Input(){
+  return ( <div>
+    <input type="text" placeholder="Username" />
+        <input type="password" placeholder="Password" />
+        </div>
+  )
+}
+
+export default Input;
+
+//// Login.jsx //////
+
+import React from "react";
+import Input from "./Input";
+
+function Login() {
+  return (
+    <form className="form">
+      <Input />
+      <button type="submit">Login</button>
+    </form>
+  );
+}
+
+export default Login;
+
